@@ -5,7 +5,7 @@ const Dashboard = async() => {
   const session = await getServerSession(authOptions);
 
   return (
-    <div>{JSON.stringify(session)}</div>
+    <div>{session ? JSON.stringify(session):"Hi"}</div>
   )
 }
 
