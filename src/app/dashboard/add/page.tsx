@@ -1,4 +1,4 @@
-import AddFriendButton from '@/components/views/AddFriendButton'
+import AddFriendButton from '@/components/shared/AddFriendButton'
 import React from 'react'
 
 const Add = () => {
