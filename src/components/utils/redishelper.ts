@@ -5,7 +5,7 @@ type Command = 'zrange' | 'sismember' | 'get' | 'smembers';
 
 export async function fetchRedis(command: Command, ...args: (string | number)[]) {
     const commandUrl = `${upstashRedisRestUrl}/${command}/${args.join('/')}`;
-    console.log("commandUrl", commandUrl);
+    
     const response = await fetch(commandUrl, {
         headers: {
             Authorization: `Bearer ${authToken}`
