@@ -1,4 +1,4 @@
-import Button from '@/components/ui/Button'
+import Button from '@/components/shared/ui/Button'
 import { db } from '@/lib/db'
 import Image from 'next/image'
 

@@ -44,3 +44,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [Next Auth](https://www.npmjs.com/package/next-auth)
 - [@next-auth/upstash-redis-adapter](https://www.npmjs.com/package/@next-auth/upstash-redis-adapter)
 - React hot Toast
+- [@tailwindcss/forms](https://www.npmjs.com/package/@tailwindcss/forms)
+- Axios

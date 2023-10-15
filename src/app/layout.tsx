@@ -1,4 +1,4 @@
-import Providers from '@/components/Providers'
+import Wrapper from '@/components/shared/Wrapper'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -18,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
+        <Wrapper>
           {children}
-        </Providers>
+        </Wrapper>
       </body>
     </html>
   )
