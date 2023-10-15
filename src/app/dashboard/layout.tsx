@@ -1,9 +1,11 @@
 import FriendRequestSidebarOption from "@/components/shared/FriendRequestSidebarOption";
 import { Icon, Icons } from "@/components/shared/Icons";
+import SidebarChatList from "@/components/shared/SidebarChatList";
 import SignOutButton from "@/components/shared/SignOutButton";
 import { user } from "@/components/types/db";
 import { SidebarOption } from "@/components/types/pagesTypes";
 import { sidebarOptions } from "@/components/utils/dataarray";
+import { getFriendsByUserId } from "@/components/utils/functions";
 import { fetchRedis } from "@/components/utils/redishelper";
 import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import { getServerSession } from "next-auth";
@@ -15,7 +17,7 @@ import { PropsWithChildren } from "react"
 const Layout = async ({ children }: PropsWithChildren) => {
     const session = await getServerSession(authOptions);
     if (!session) notFound();
-
+    const friends = await getFriendsByUserId(session.user.id);
     const unseenRequestCount = (await fetchRedis('smembers', `user:${session.user.id}:incoming_friend_requests`) as user[]).length;
 
     return (
@@ -24,13 +26,15 @@ const Layout = async ({ children }: PropsWithChildren) => {
                 <Link href={"/dashboard"} className="flex h-16 shrink-0 items-center ">
                     Logo
                 </Link>
-                <div className="text-xs font-semibold leading-6 text-gray-400">
-                    Your chats
-                </div>
+                {friends.length > 0 ? (
+                    <div className="text-xs font-semibold leading-6 text-gray-400">
+                        Your chats
+                    </div>
+                ) : null}
                 <nav className="flex flex-1 flex-col">
                     <ul role="list" className="flex flex-1 flex-col gap-y-7">
                         <li className="">
-                        Chats that this user has
+                            <SidebarChatList sessionId={session.user.id} friends={friends} />
                         </li>
                         <li>
                             <div className="text-xs font-semibold leading-6 text-gray-400">

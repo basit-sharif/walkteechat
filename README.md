@@ -46,3 +46,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - React hot Toast
 - [@tailwindcss/forms](https://www.npmjs.com/package/@tailwindcss/forms)
 - Axios
+- Nanoid
+- Toast
+- React textarea autosize
+- Date fns

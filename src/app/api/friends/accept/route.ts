@@ -33,8 +33,7 @@ export async function POST(req: NextRequest) {
         await db.sadd(`user:${idToAdd}:friends`, session.user.id);
 
         // await db.srem(`user:${idToAdd}:outbound_icoming_friend_requests`, session.user.id);
-
-        await db.srem(`user:${session.user.id}:icoming_friend_requests`, idToAdd);
+        await db.srem(`user:${session.user.id}:incoming_friend_requests`, idToAdd);
 
         return NextResponse.json('OK');
     } catch (error) {
