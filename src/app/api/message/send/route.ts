@@ -34,8 +34,6 @@ export async function POST(req: NextRequest) {
         const rawSender = await fetchRedis('get', `user:${session.user.id}`) as string;
         const sender = await JSON.parse(rawSender) as user;
 
-        console.log("sender", sender);
-
         const messageData: message = {
             id: nanoid(),
             senderId: session.user.id,
@@ -45,14 +43,12 @@ export async function POST(req: NextRequest) {
         }
         const message = messageValidator.parse(messageData);
 
-
-        pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming-message', message);
-        pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), 'new_message', {
+        await pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming-message', message);
+        await pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), 'new_message', {
             ...message,
             senderImg: sender.image,
             senderName: sender.name,
-        });
-
+        })
         await db.zadd(`chat:${chatId}:messages`, {
             score: Date.now(),
             member: JSON.stringify(message)
