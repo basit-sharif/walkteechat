@@ -12,6 +12,7 @@ const ChatInput = ({ chatPartner, chatId }: { chatPartner: user, chatId: string 
     const [isLoading, setLoading] = useState<boolean>(false);
 
     const sendMessage = async () => {
+        if(input.trim().length <= 0) return 
         setLoading(true);
         try {
             await new Promise((resolve) => setTimeout(resolve, 1000));

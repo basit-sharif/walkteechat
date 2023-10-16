@@ -3,9 +3,9 @@ import { getServerSession } from "next-auth"
 
 const Dashboard = async() => {
   const session = await getServerSession(authOptions);
-
+console.log(session ? JSON.stringify(session):"Hi")
   return (
-    <div>{session ? JSON.stringify(session):"Hi"}</div>
+    <div>Dashboard</div>
   )
 }
 

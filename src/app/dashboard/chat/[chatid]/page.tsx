@@ -65,7 +65,7 @@ const Chat = async ({ params }: { params: { chatid: string } }) => {
                     </div>
                 </div>
             </div>
-            <Messages sessionImg={session.user.image} chatPartner={chatPartner} initialMessages={initialMessage} sessionId={session.user.id} />
+            <Messages chatId={chatid} sessionImg={session.user.image} chatPartner={chatPartner} initialMessages={initialMessage} sessionId={session.user.id} />
             <ChatInput chatId={chatid} chatPartner={chatPartner} />
         </div>
     )
