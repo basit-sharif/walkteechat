@@ -21,11 +21,11 @@ const SidebarChatList = ({ friends, sessionId }: { friends: user[], sessionId: s
 
     useEffect(() => {
         pusherClient.subscribe(toPusherKey(`user:${sessionId}:chats`));
-        pusherClient.subscribe(toPusherKey(`user:${sessionId}:friends`));
+        // pusherClient.subscribe(toPusherKey(`user:${sessionId}:friends`));
 
-        const newFriendHandler = () => {
-            refresh();
-        }
+        // const newFriendHandler = () => {
+        //     refresh();
+        // }
         const chatHandler = (message: ExtendedMessage) => {
             const shouldNotify = pathName !== `/dashboard/chat/${chatHrefConstructor(sessionId, message.senderId)}`;
 
@@ -41,19 +41,20 @@ const SidebarChatList = ({ friends, sessionId }: { friends: user[], sessionId: s
                     senderName={message.senderName}
                 />
             ));
-            setUnseenMessages((prev)=>[...prev, message]);
+            setUnseenMessages((prev) => [...prev, message]);
 
         }
 
         pusherClient.bind('new-message', chatHandler);
-        pusherClient.bind('new_friend', newFriendHandler);
+        // pusherClient.bind('new_friend', newFriendHandler);
 
         return () => {
             pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:chats`));
-            pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`));
+            pusherClient.unbind('new-message', chatHandler);
+            // pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`));
         }
 
-    }, [pathName,sessionId])
+    }, [pathName, sessionId])
 
 
     useEffect(() => {
