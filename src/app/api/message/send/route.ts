@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
         const message = messageValidator.parse(messageData);
 
         await pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming-message', message);
-        await pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), 'new_message', {
+        await pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), 'new-message', {
             ...message,
             senderImg: sender.image,
             senderName: sender.name,

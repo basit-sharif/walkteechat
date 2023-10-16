@@ -1,7 +1,6 @@
 import { fetchRedis } from "@/components/utils/redishelper";
 import { db } from "@/lib/db";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { syncBuiltinESMExports } from "module";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
