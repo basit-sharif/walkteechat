@@ -12,8 +12,10 @@ const Messages = ({ initialMessages, sessionId, sessionImg, chatPartner, chatId 
 
 
     useEffect(() => {
+        console.log('Before pusher on message like start')
         pusherClient.subscribe(toPusherKey(`chat:${chatId}`));
-
+        console.log('subscribe to chat: ' , `chat:${chatId}`)
+        
         const messageHandler = (message:message) => {
             setMessages((prev) => [message, ...prev]);
         }
