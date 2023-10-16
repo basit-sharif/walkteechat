@@ -45,7 +45,7 @@ const SidebarChatList = ({ friends, sessionId }: { friends: user[], sessionId: s
 
         }
 
-        pusherClient.bind('new-messsage', chatHandler);
+        pusherClient.bind('new-message', chatHandler);
         pusherClient.bind('new_friend', newFriendHandler);
 
         return () => {
