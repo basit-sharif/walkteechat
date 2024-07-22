@@ -41,7 +41,8 @@ const Chat = async ({ params }: { params: { chatid: string } }) => {
     const initialMessage = await getChatMessages(chatid);
 
     return (
-        <div className="flex-1 justify-between flex flex-col h-full max-h-[calc(100vh-6rem)] ">
+        // max-h-[calc(100vh-6rem)] 
+        <div className="flex-1 justify-between flex flex-col h-full pb-4">
             <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
                 <div className="relative flex items-center space-x-4">
                     <div className="relative">
