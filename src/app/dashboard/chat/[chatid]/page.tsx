@@ -67,7 +67,7 @@ const Chat = async ({ params }: { params: { chatid: string } }) => {
                         <span className="text-sm text-gray-600 "> {chatPartner.email}</span>
                     </div>
                 </div>
-                <Link href={"/dashboard/navigation"} className="px-2 opacity-75">
+                <Link href={"/dashboard/navigation"} className="md:hidden px-2 opacity-75">
                     <Undo2 />
                 </Link>
             </div>
