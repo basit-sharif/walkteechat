@@ -22,7 +22,7 @@ const Layout = async ({ children }: PropsWithChildren) => {
 
     return (
         <div className="w-full flex h-screen">
-            <div className="flex h-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
+            <div className="hidden md:flex h-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
                 <Link href={"/dashboard"} className="flex h-16 shrink-0 items-center ">
                     <Image width={130} height={130} alt="WalkteeChatAppLogo" src={"/LogoWalkTee.png"} />
                 </Link>
@@ -93,7 +93,7 @@ const Layout = async ({ children }: PropsWithChildren) => {
                 </nav>
             </div>
             {/* py-16 md:py-12 */}
-            <aside className="max-h-screen container w-full">{children}</aside>
+            <aside className="max-h-screen px-[6px] md:px-4 xlg:px-6 container w-full">{children}</aside>
         </div>
     )
 }

@@ -46,7 +46,7 @@ const Chat = async ({ params }: { params: { chatid: string } }) => {
             <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
                 <div className="relative flex items-center space-x-4">
                     <div className="relative">
-                        <div className="relative w-8 sm:w-12 h-8 sm:h-12">
+                        <div className="relative w-11 sm:w-12 h-11 sm:h-12">
                             <Image
                                 fill
                                 referrerPolicy="no-referrer"

@@ -60,7 +60,7 @@ const Messages = ({ initialMessages, sessionId, sessionImg, chatPartner, chatId 
                                 </span>
                             </span>
                         </div>
-                        <div className={cn('relative w-6 h-6', {
+                        <div className={cn('hidden md:block relative w-6 h-6', {
                             'order-2': isCurrentUser,
                             'order-1': !isCurrentUser,
                             'invisible': hasNextMessageFromSameUser
