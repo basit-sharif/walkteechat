@@ -7,14 +7,13 @@ import { SidebarOption } from "@/components/types/pagesTypes";
 import { sidebarOptions } from "@/components/utils/dataarray";
 import { getFriendsByUserId } from "@/components/utils/functions";
 import { fetchRedis } from "@/components/utils/redishelper";
-import { authOptions } from "@/pages/api/auth/[...nextauth]"
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PropsWithChildren } from "react"
 
-const Layout = async ({ children }: PropsWithChildren) => {
+const Navigation = async () => {
     const session = await getServerSession(authOptions);
     if (!session) notFound();
     const friends = await getFriendsByUserId(session.user.id);
@@ -22,7 +21,7 @@ const Layout = async ({ children }: PropsWithChildren) => {
 
     return (
         <div className="w-full flex h-screen">
-            <div className={`hidden md:flex h-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6`}>
+            <div className={`md:hidden h-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6`}>
                 <Link href={"/dashboard"} className="flex h-16 shrink-0 items-center ">
                     <Image width={130} height={130} alt="WalkteeChatAppLogo" src={"/LogoWalkTee.png"} />
                 </Link>
@@ -92,10 +91,8 @@ const Layout = async ({ children }: PropsWithChildren) => {
                     </ul>
                 </nav>
             </div>
-            {/* py-16 md:py-12 */}
-            <aside className="max-h-screen px-[6px] md:px-4 xlg:px-6 container w-full">{children}</aside>
         </div>
     )
 }
 
-export default Layout
+export default Navigation

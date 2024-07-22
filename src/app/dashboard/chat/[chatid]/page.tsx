@@ -5,8 +5,10 @@ import { fetchRedis } from "@/components/utils/redishelper";
 import { messageArrayValidator } from "@/components/utils/validation";
 import { db } from "@/lib/db";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { Undo2 } from "lucide-react";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from 'next/navigation';
 
 const getChatMessages = async (chatId: string) => {
@@ -65,6 +67,9 @@ const Chat = async ({ params }: { params: { chatid: string } }) => {
                         <span className="text-sm text-gray-600 "> {chatPartner.email}</span>
                     </div>
                 </div>
+                <Link href={"/dashboard/navigation"} className="px-2 opacity-75">
+                    <Undo2 />
+                </Link>
             </div>
             <Messages chatId={chatid} sessionImg={session.user.image} chatPartner={chatPartner} initialMessages={initialMessage} sessionId={session.user.id} />
             <ChatInput chatId={chatid} chatPartner={chatPartner} />
