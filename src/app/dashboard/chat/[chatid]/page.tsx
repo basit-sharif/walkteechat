@@ -28,6 +28,11 @@ const getChatMessages = async (chatId: string) => {
 const Chat = async ({ params }: { params: { chatid: string } }) => {
     const { chatid } = params;
     const session = await getServerSession(authOptions);
+    await new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve("hi")
+        },20000)
+    })
     if (!session) notFound();
 
     const { user } = session;

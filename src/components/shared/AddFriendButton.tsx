@@ -43,9 +43,9 @@ const AddFriendButton = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm">
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md w-full ">
       <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Add friend by E-mail</label>
-      <div className="mt-2 flex gap-4">
+      <div className="mt-2 w-full flex gap-4">
         <input
           {...register('email')}
           type="text"

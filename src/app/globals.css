@@ -29,3 +29,25 @@
 .scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
   border-radius: 0.25rem;
 }
+
+.fa-spinner {
+  font-size: 50px;
+  /* Adjust size as needed */
+  animation: spin 2s infinite linear;
+  /* Animation properties */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  /* Initial rotation */
+  100% {
+    transform: rotate(360deg);
+  }
+
+  /* Full rotation */
+}
+
+
